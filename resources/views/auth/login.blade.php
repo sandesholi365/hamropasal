@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="en">
-<head>
-   @include('admin.layouts.head')
-	<title>Hamropasal | Login </title>
-</head>
+    <head>
+        @include('admin.layouts.head')
+         <title>Hamropasal | Login </title>
+     </head>
 <body class="bg-login">
 	<!--wrapper-->
-	<div class="wrapper">
-		<div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
-			<div class="container-fluid">
-				<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
-					<div class="col mx-auto">
-						<div class="card">
-							<div class="card-body">
+    <div class="wrapper">
+        <div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
+            <div class="container-fluid">
+                <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+                    <div class="col mx-auto">
+                        <div class="card">
+                            <div class="card-body">
 								<div class="border p-4 rounded">
 									<div class="text-center">
 										<h3><b>Sign in</b></h3>
@@ -27,17 +27,17 @@
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
-                                            @enderror
+                                                @enderror
                                             </div>
                                             <div class="col-12">
-												<label for="inputChoosePassword" class="form-label">Enter Password</label>
+												<label for="password" class="form-label">Enter Password</label>
 												<div class="input-group" id="show_hide_password">
-													<input type="password" class="form-control border-end-0 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" id="password"  placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+													<input type="password" class="form-control border-end-0 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" id="password"  placeholder="Enter Password"> <a href="#" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
                                                     @error('password')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
-                                                @enderror
+                                                    @enderror
                                                 </div>
 											</div>
 											<div class="col-md-6">
@@ -58,37 +58,35 @@
 											</div>
 										</form>
 									</div>
-								</div>
-                                {{-- <p>Don't have an account yet? <a href="#">Sign up here</a> --}}
-                                </p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--end row-->
-			</div>
-		</div>
-	</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end row-->
+            </div>
+        </div>
+    </div>
 	<!--end wrapper-->
-@include('admin.layouts.footer')
-	<!--Password show & hide js -->
-	<script>
-		$(document).ready(function () {
-			$("#show_hide_password a").on('click', function (event) {
-				event.preventDefault();
-				if ($('#show_hide_password input').attr("type") == "text") {
-					$('#show_hide_password input').attr('type', 'password');
-					$('#show_hide_password i').addClass("bx-hide");
-					$('#show_hide_password i').removeClass("bx-show");
-				} else if ($('#show_hide_password input').attr("type") == "password") {
-					$('#show_hide_password input').attr('type', 'text');
-					$('#show_hide_password i').removeClass("bx-hide");
-					$('#show_hide_password i').addClass("bx-show");
-				}
-			});
-		});
-	</script>
-	<!--app JS-->
+    @yield('script')
+	<script src="/backend/assets/js/jquery.min.js"></script>
+	<!--plugins-->
+    <script>
+        $(document).ready(function () {
+            $("#show_hide_password a").on('click', function (event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass("bx-hide");
+                    $('#show_hide_password i').removeClass("bx-show");
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass("bx-hide");
+                    $('#show_hide_password i').addClass("bx-show");
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
