@@ -1,10 +1,10 @@
-	<!-- Bootstrap JS -->
-	<script src="backend/assets/js/bootstrap.bundle.min.js"></script>
-	<!--plugins-->
-	<script src="backend/assets/js/jquery.min.js"></script>
-	<script src="backend/assets/plugins/simplebar/js/simplebar.min.js"></script>
-	<script src="backend/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="backend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-	<!--app JS-->
-	<script src="backend/assets/js/app.js"></script>
-	@yield("script")
+<script src="{{asset('backend/assets/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('backend/assets/js/jquery.min.js')}}"></script>
+<script src="{{asset('backend/assets/plugins/simplebar/js/simplebar.min.js')}}"></script>
+<script src="{{asset('backend/assets/plugins/metismenu/js/metisMenu.min.js')}}"></script>
+<script src="{{asset('backend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
+<script src="{{asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
+<script src="{{asset('backend/assets/js/app.js')}}"></script>
+<script src="{{asset('backend/assets/js/quill.js')}}"></script>
+@yield('scripts')
