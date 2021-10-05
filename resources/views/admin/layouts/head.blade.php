@@ -11,3 +11,4 @@
 <link href="{{asset('backend/assets/css/icons.css')}}" rel="stylesheet">
 <link href="{{asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
 <link href="{{asset('backend/assets/css/quill.snow.css')}}" rel="stylesheet">
+<link href="{{asset('backend/assets/css/bootstrap-toggle.min.css')}}" rel="stylesheet" />

@@ -21,3 +21,4 @@ Route::get('/', [AdminController::class,'admin'])->name('admin');
 
 //Banner Section
 Route::resource('banner', BannerController::class);
+Route::post('banner_status', [App\Http\Controllers\BannerController::class, 'bannerStatus'])->name('banner.status');

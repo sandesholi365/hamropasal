@@ -3,7 +3,7 @@
 			<div class="sidebar-header">
 					<i class='font-32 text-primary lni lni-dashboard'></i>
 				<div>
-					<a href="#">
+					<a href="{{route('admin')}}">
 						<h4 class="logo-text">Dashboard</h4>
 					</a>
 				</div>
