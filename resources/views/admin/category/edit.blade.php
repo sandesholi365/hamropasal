@@ -8,7 +8,7 @@
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="{{route('admin')}}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Edit Banner</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Category</li>
                 </ol>
             </nav>
         </div>
@@ -27,46 +27,48 @@
             <div class="card border-top border-0 border-4 border-primary">
                 <div class="card-body">
                     <div class="card-title d-flex align-items-center">
-                        <h5 class="mb-0 text-primary">Edit your banner</h5>
+                        <h5 class="mb-0 text-primary">Edit your category</h5>
                     </div>
                     <hr>
-                    <form action="{{route('banner.update',$banner->id)}}" method="POST">
+                    <form action="{{route('category.update',$category->id)}}" method="POST">
                         @csrf
-                        @method('patch')
+                        {{ method_field('PUT') }}
                         <div class="col-md-10">
                             <label for="title" class="form-label"><b> Title <span style="color:#ff0000">*</span></b></label>
-                            <input type="text" name="title" placeholder="Enter title here...." class="form-control" id="title" value="{{$banner->title}}">
+                            <input type="text" name="title" placeholder="Enter title here...." class="form-control" id="title" value="{{$category->title}}">
                         </div><br>
-                        <div class="col-12">
-                            <label for="description" class="form-label"><b>Description</b></label>
+                        <div class="col-md-10">
+                            <label for="summary" class="form-label"><b>Summary</b></label>
                               <div class="form-group">
-                                <textarea name="description" placeholder="Enter Description here...." id="description">{{$banner->description}}</textarea>
+                                <textarea name="summary" id="summary">{{$category->summary}}</textarea>
                               <div>
                             </div><br>
-
-                        <div class="col-12">
-                            <label for="photo" class="form-label"><b>Select a picture <span style="color:#ff0000">*</span></b></label>
+                        <div class="col-md-10">
+                            <label for="photo" class="form-label"><b>Select a picture</b></label>
                             <div class="input-group">
                                 <span class="input-group-btn">
                                   <a id="lfm" data-input="photo" data-preview="holder" class="btn btn-primary">
                                     <i class="fa fa-picture-o"></i> Choose
                                   </a>
                                 </span>
-                                <input id="photo" class="form-control" type="text" name="photo" value="{{$banner->photo}}">
+                                <input id="photo" class="form-control" type="text" name="photo" value="{{$category->photo}}">
                               </div>
                               <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                         </div><br>
-
-                        <div class="col-12">
-                            <label for="condition" class="form-label"><b>Condition <span style="color:#ff0000">*</span></b></label>
-                                <select class="form-select" id="condition" name="condition">
-                                    <option>--Condition--</option>
-                                    <option value="banner" {{$banner->condition=='banner' ? 'selected':''}}>Banner</option>
-                                    <option value="promo" {{$banner->condition=='promo' ? 'selected':''}}>Promote</option>
+                        <div class="col-md-10">
+                            <label for="is_parent"><b> Is Parent : &nbsp;</b></label> &nbsp;
+                            <input id="is_parent" name="is_parent" class="form-check-input" type="checkbox" value="1"{{$category->is_parent==1 ? 'checked':''}}> Yes
+                        </div><br>
+                        <div class="col-md-10 {{$category->is_parent==1 ? 'd-none':''}}" id="parent_cat_div">
+                            <label for="parent_id" class="form-label"><b>Parent Category</b></label>
+                                <select class="form-select" id="parent_id" name="parent_id">
+                                    @foreach ($parent_cats as $pcat )
+                                        <option value="{{$pcat->id}}" {{$pcat->id==$category->parent_id ? 'selected':''}}>{{$pcat->title}}</option>
+                                    @endforeach
                                 </select>
                         </div><br>
-                        <div class="col-12">
-                               <button type="submit" class="btn btn-outline-success px-4">Update</button>
+                        <div class="col-md-10">
+                               <button type="submit" class="btn btn-outline-success px-4">Save</button>
                                <a href="{{url()->previous()}}" class="btn btn-outline-danger px-4">Cancel</a>
                         </div>
                     </form>
@@ -82,9 +84,22 @@
 <script>$('#lfm').filemanager('image');</script>
 <script>
     ClassicEditor
-            .create( document.querySelector( '#description' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-  </script>
+        .create( document.querySelector( '#summary' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+    $('#is_parent').change(function(e){
+        e.preventDefault();
+        var is_checked=$('#is_parent').prop('checked');
+        if(is_checked){
+            $('#parent_cat_div').addClass('d-none');
+            $('#parent_cat_div').val('');
+        }
+        else{
+            $('#parent_cat_div').removeClass('d-none');
+        }
+    });   
+    </script>
 @endsection

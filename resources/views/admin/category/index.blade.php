@@ -4,52 +4,47 @@
     <div class="col-lg-12">
         @include('admin.layouts.notification')
         </div>
-
     <div class="card">
         <div class="card-body d-lg-flex align-items-center">
             <div class="position-relative">
-                <h6 class="mb-0 text-uppercase">Total Banners : {{\App\Models\Banner::count()}}</h6>
+                <h6 class="mb-0 text-uppercase">Total Category : {{\App\Models\Category::count()}}</h6>
             </div>
-          <div class="ms-auto"><a href="{{route('banner.create')}}" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Create a new banner</a></div>
+          <div class="ms-auto"><a href="{{route('category.create')}}" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Create a new category</a></div>
         </div>
         <div class="card-body border border-primary">
             <div class="table-responsive">
-                <table id="allbanner" class="table table-striped table-bordered">
+                <table id="allcategory" class="table table-striped table-bordered">
                     <thead class="table-primary border">
                         <tr style="text-align: center; vertical-align: middle;">
                             <th>S.N</th>
                             <th>Title</th>
-                            <th>Description</th>
+                            {{-- <th>Summary</th> --}}
                             <th>Photo</th>
-                            <th>Condition</th>
+                            <th>Is Parent</th>
+                            <th>Parent Category</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($banners as $banner)
+                        @foreach ($categories as $category)
                         <tr style="text-align: center; vertical-align: middle;">
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $banner->title }}</td>
-                            <td>{!! html_entity_decode($banner->description)!!}</td>
-                            <td><img src="{{$banner->photo }}" alt="banner image" style="max-height: 50px; max-width:50px"></td>
+                            <td>{{ $category->title }}</td>
+                            {{-- <td>{!! html_entity_decode(Str::limit($category->summary, 40))!!}</td> --}}
+                            <td><img src="{{$category->photo }}" alt="category image" style="max-height: 50px; max-width:50px"></td>
+                            <td>{{$category->is_parent==1 ? 'Yes' : 'No'}}</td>
+                            <td>{{App\Models\Category::where('id',$category->parent_id)->value('title')}}</td>
                             <td>
-                                @if($banner->condition=='banner')
-                                <button type="button" class="btn btn-success btn-sm radius-30 px-2">{{ $banner->condition }}</button>
-                                @else
-                                <button type="button" class="btn btn-primary btn-sm radius-30 px-2">{{ $banner->condition }}</button>
-                                @endif
-                            </td>
-                            <td>
-                                <input type="checkbox" name="toggle" value={{ $banner->id }} data-size="sm" data-toggle="toggle" {{$banner->status=='active' ? 'checked':''}} data-on="Active" data-off="Inactive" data-onstyle="danger" data-offstyle="dark">
+                                <input type="checkbox" name="toggle" value={{ $category->id }} data-size="sm" data-toggle="toggle" {{$category->status=='active' ? 'checked':''}} data-on="Active" data-off="Inactive" data-onstyle="danger" data-offstyle="dark">
                             </td>
                             <td>
                                 <div class="d-flex order-actions justify-content-center">
-                                <a href="{{route('banner.edit', $banner->id)}}" data-toggle="tooltip" title="edit" class="btn btn-sm btn-warning" data-placement="button"><i class="bx bxs-edit"></i></a>
-                                <form action="{{route('banner.destroy',$banner->id)}}" method="POST">
+                                <a href="{{route('category.edit', $category->id)}}" data-toggle="tooltip" title="edit" class="btn btn-sm btn-warning" data-placement="button"><i class="bx bxs-edit"></i></a>
+                                <form action="{{route('category.destroy',$category->id)}}" method="POST">
                                     @csrf
                                     @method('Delete')
-                                    <a href="" data-toggle="tooltip" title="delete" class="dltbtn btn btn-sm btn-danger" data-id="{{$banner->id}}" data-placement="button"><i class="bx bxs-trash"></i></a>
+                                    <a href="" data-toggle="tooltip" title="delete" class="dltbtn btn btn-sm btn-danger" data-id="{{$category->id}}" data-placement="button"><i class="bx bxs-trash"></i></a>
                                 </form>
                             </div>
                             </td>
@@ -65,13 +60,13 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-        var table = $('#allbanner').DataTable( {
+        var table = $('#allcategory').DataTable( {
             lengthChange: false,
             buttons: [ 'copy', 'excel', 'pdf', 'print']
         } );
      
         table.buttons().container()
-            .appendTo( '#allbanner_wrapper .col-md-6:eq(0)' );
+            .appendTo( '#allcategory_wrapper .col-md-6:eq(0)' );
     } );
 </script>
 <script>
@@ -79,7 +74,7 @@
         var mode=$(this).prop('checked');
         var id=$(this).val();
     $.ajax({
-        url:"{{route('banner.status')}}",
+        url:"{{route('category.status')}}",
         type:"POST",
         data:{
             _token:'{{csrf_token()}}',

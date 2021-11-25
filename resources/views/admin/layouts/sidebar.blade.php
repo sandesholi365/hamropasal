@@ -19,7 +19,7 @@
 						<div class="menu-title">Banner Management</div>
 					</a>
 					<ul>
-						<li> <a href="{{ route('banner.index') }}"><i class="bx bx-right-arrow-alt"></i>All Banners</a>
+						<li> <a href="{{ route('banner.index') }}"><i class="bx bx-right-arrow-alt"></i>All Banner</a>
 						</li>
 						<li> <a href="{{route('banner.create')}}"><i class="bx bx-right-arrow-alt"></i>Add Banner</a>
 						</li>
@@ -32,9 +32,9 @@
 						<div class="menu-title">Category Management</div>
 					</a>
 					<ul>
-						<li> <a href="component-alerts.html"><i class="bx bx-right-arrow-alt"></i>Alerts</a>
+						<li> <a href="{{ route('category.index')}}"><i class="bx bx-right-arrow-alt"></i>All Category</a>
 						</li>
-						<li> <a href="component-accordions.html"><i class="bx bx-right-arrow-alt"></i>Accordions</a>
+						<li> <a href="{{ route('category.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Category</a>
 						</li>
 					</ul>
 				</li>				

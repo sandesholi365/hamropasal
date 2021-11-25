@@ -28,5 +28,5 @@ window.setTimeout(function() {
     $(".alert").slideUp(500, function() {
         $(this).remove();
     });
-}, 7000);
+}, 5000);
 </script>

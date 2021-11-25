@@ -6,7 +6,7 @@
 <script src="{{asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
 <script src="{{asset('backend/assets/js/app.js')}}"></script>
-<script src="{{asset('backend/assets/js/quill.js')}}"></script>
+<script src="{{asset('backend/assets/js/ckeditor.js')}}"></script>
 <script src="{{asset('backend/assets/js/bootstrap-toggle.min.js')}}"></script>
 <script src="{{asset('backend/assets/js/sweetalert.min.js')}}"></script>
 @yield('scripts')

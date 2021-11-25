@@ -8,7 +8,7 @@
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="{{route('admin')}}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Add Banner</li>
+                    <li class="breadcrumb-item active" aria-current="page">Add Category</li>
                 </ol>
             </nav>
         </div>
@@ -27,24 +27,23 @@
             <div class="card border-top border-0 border-4 border-primary">
                 <div class="card-body">
                     <div class="card-title d-flex align-items-center">
-                        <h5 class="mb-0 text-primary">Create a new banner</h5>
+                        <h5 class="mb-0 text-primary">Create a new category</h5>
                     </div>
                     <hr>
-                    <form action="{{route('banner.store')}}" method="POST">
+                    <form action="{{route('category.store')}}" method="POST">
                         @csrf
                         <div class="col-md-10">
                             <label for="title" class="form-label"><b> Title <span style="color:#ff0000">*</span></b></label>
                             <input type="text" name="title" placeholder="Enter title here...." class="form-control" id="title" value="{{old('title')}}">
                         </div><br>
-                        <div class="col-12">
-                            <label for="description" class="form-label"><b>Description</b></label>
+                        <div class="col-md-10">
+                            <label for="summary" class="form-label"><b>Summary</b></label>
                               <div class="form-group">
-                                <textarea name="description" placeholder="Enter Description here...." id="description">{{old('description')}}</textarea>
-                                <div>
+                                <textarea name="summary" id="summary" placeholder="Enter summary here....">{{old('summary')}}</textarea>
+                              <div>
                             </div><br>
-
-                        <div class="col-12">
-                            <label for="photo" class="form-label"><b>Select a picture <span style="color:#ff0000">*</span></b></label>
+                        <div class="col-md-10">
+                            <label for="photo" class="form-label"><b>Select a picture</b></label>
                             <div class="input-group">
                                 <span class="input-group-btn">
                                   <a id="lfm" data-input="photo" data-preview="holder" class="btn btn-primary">
@@ -55,16 +54,20 @@
                               </div>
                               <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                         </div><br>
-
-                        <div class="col-12">
-                            <label for="condition" class="form-label"><b>Condition <span style="color:#ff0000">*</span></b></label>
-                                <select class="form-select" id="condition" name="condition">
-                                    <option>--Condition--</option>
-                                    <option value="banner" {{old('condition')=='banner' ? 'selected':''}}>Banner</option>
-                                    <option value="promo" {{old('condition')=='promo' ? 'selected':''}}>Promote</option>
+                        <div class="col-md-10">
+                            <label for="is_parent"><b> Is Parent : &nbsp;</b></label> &nbsp;
+                            <input id="is_parent" class="form-check-input" name="is_parent" type="checkbox" value="1" checked> Yes
+                        </div><br>
+                        <div class="col-md-10 d-none" id="parent_cat_div">
+                            <label for="parent_id" class="form-label"><b>Parent Category</b></label>
+                                <select class="form-select" id="parent_id" name="parent_id">
+                                    <option value="">--Parent Category--</option>
+                                    @foreach ($parent_cats as $pcat )
+                                        <option value="{{$pcat->id}}"{{old('parent_id')==$pcat->id ? 'selected' : ''}}>{{$pcat->title}}</option>
+                                    @endforeach
                                 </select>
                         </div><br>
-                        <div class="col-12">
+                        <div class="col-md-10">
                             <label for="status" class="form-label"><b>Status <span style="color:#ff0000">*</span></b></label>
                                 <select class="form-select" id="status" name="status">
                                     <option>--Status--</option>
@@ -72,7 +75,7 @@
                                     <option value="inactive" {{old('status')=='inactive' ? 'selected':''}}>Inactive</option>
                                 </select>
                         </div><br>
-                        <div class="col-12">
+                        <div class="col-md-10">
                                <button type="submit" class="btn btn-outline-success px-4">Save</button>
                                <a href="{{url()->previous()}}" class="btn btn-outline-danger px-4">Cancel</a>
                         </div>
@@ -88,10 +91,23 @@
 <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
 <script>$('#lfm').filemanager('image');</script>
 <script>
-    ClassicEditor
-            .create( document.querySelector( '#description' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-    </script>
+ClassicEditor
+        .create( document.querySelector( '#summary' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+$('#is_parent').change(function(e){
+    e.preventDefault();
+    var is_checked=$('#is_parent').prop('checked');
+    if(is_checked){
+        $('#parent_cat_div').addClass('d-none');
+        $('#parent_cat_div').val('');
+    }
+    else{
+        $('#parent_cat_div').removeClass('d-none');
+    }
+});   
+</script>
 @endsection
