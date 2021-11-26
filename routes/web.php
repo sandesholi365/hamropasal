@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -27,3 +28,7 @@ Route::post('banner_status', [App\Http\Controllers\BannerController::class, 'ban
 //Categories Section
 Route::resource('/category', CategoryController::class);
 Route::post('category_status', [App\Http\Controllers\CategoryController::class, 'categoryStatus'])->name('category.status');
+
+//Brand Section
+Route::resource('/brand', BrandController::class);
+Route::post('brand_status', [App\Http\Controllers\BrandController::class, 'brandStatus'])->name('brand.status');

@@ -37,7 +37,20 @@
 						<li> <a href="{{ route('category.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Category</a>
 						</li>
 					</ul>
-				</li>				
+				</li>	
+				<li>
+					<a class="has-arrow" href="#">
+						<div class="parent-icon"><i class='bx bx-badge-check'></i>
+						</div>
+						<div class="menu-title">Brand Management</div>
+					</a>
+					<ul>
+						<li> <a href="{{ route('brand.index')}}"><i class="bx bx-right-arrow-alt"></i>All Brand</a>
+						</li>
+						<li> <a href="{{ route('brand.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Brand</a>
+						</li>
+					</ul>
+				</li>
 				<li>
 					<a class="has-arrow" href="#">
 						<div class="parent-icon"><i class='bx bx-shopping-bag'></i>
