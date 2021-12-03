@@ -10,7 +10,7 @@
             <div class="position-relative">
                 <h6 class="mb-0 text-uppercase">Total Brands : {{\App\Models\Brand::count()}}</h6>
             </div>
-          <div class="ms-auto"><a href="{{route('brand.create')}}" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Create a new brand</a></div>
+          <div class="ms-auto"><a href="{{route('brand.create')}}" class=" btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Create a new brand</a></div>
         </div>
         <div class="card-body border border-primary">
             <div class="table-responsive">
@@ -31,17 +31,17 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $brand->title }}</td>
                             <td>{{ $brand->slug }}</td>
-                            <td><img src="{{$brand->photo }}" alt="brand image" style="max-height: 50px; max-width:50px"></td>
+                            <td><img src="{{$brand->photo }}" style="max-height: 50px; max-width:50px"></td>
                             <td>
                                 <input type="checkbox" name="toggle" value={{ $brand->id }} data-size="sm" data-toggle="toggle" {{$brand->status=='active' ? 'checked':''}} data-on="Active" data-off="Inactive" data-onstyle="danger" data-offstyle="dark">
                             </td>
                             <td>
                                 <div class="d-flex order-actions justify-content-center">
-                                <a href="{{route('brand.edit', $brand->id)}}" data-toggle="tooltip" title="edit" class="btn btn-sm btn-warning" data-placement="button"><i class="bx bxs-edit"></i></a>
+                                <a href="{{route('brand.edit', $brand->id)}}" data-toggle="tooltip" title="edit" class="btn-sm btn-warning" data-placement="button"><i class="bx bxs-edit"></i></a>&nbsp;
                                 <form action="{{route('brand.destroy',$brand->id)}}" method="POST">
                                     @csrf
                                     @method('Delete')
-                                    <a href="" data-toggle="tooltip" title="delete" class="dltbtn btn btn-sm btn-danger" data-id="{{$brand->id}}" data-placement="button"><i class="bx bxs-trash"></i></a>
+                                    <a href="" data-toggle="tooltip" title="delete" class="dltbtn btn-sm btn-danger" data-id="{{$brand->id}}" data-placement="button"><i class="bx bxs-trash"></i></a>
                                 </form>
                             </div>
                             </td>

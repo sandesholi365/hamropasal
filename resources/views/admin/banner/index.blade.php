@@ -32,12 +32,12 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $banner->title }}</td>
                             <td>{!! html_entity_decode($banner->description)!!}</td>
-                            <td><img src="{{$banner->photo }}" alt="banner image" style="max-height: 50px; max-width:50px"></td>
+                            <td><img src="{{$banner->photo }}" style="max-height: 50px; max-width:50px"></td>
                             <td>
                                 @if($banner->condition=='banner')
-                                <button type="button" class="btn btn-success btn-sm radius-30 px-2">{{ $banner->condition }}</button>
+                                <button type="button" class=" btn-success btn-sm px-2">{{ $banner->condition }}</button>
                                 @else
-                                <button type="button" class="btn btn-primary btn-sm radius-30 px-2">{{ $banner->condition }}</button>
+                                <button type="button" class=" btn-primary btn-sm px-2">{{ $banner->condition }}</button>
                                 @endif
                             </td>
                             <td>
@@ -45,11 +45,11 @@
                             </td>
                             <td>
                                 <div class="d-flex order-actions justify-content-center">
-                                <a href="{{route('banner.edit', $banner->id)}}" data-toggle="tooltip" title="edit" class="btn btn-sm btn-warning" data-placement="button"><i class="bx bxs-edit"></i></a>
+                                <a href="{{route('banner.edit', $banner->id)}}" data-toggle="tooltip" title="edit" class="btn-sm btn-warning" data-placement="button"><i class="bx bxs-edit"></i></a>&nbsp;
                                 <form action="{{route('banner.destroy',$banner->id)}}" method="POST">
                                     @csrf
                                     @method('Delete')
-                                    <a href="" data-toggle="tooltip" title="delete" class="dltbtn btn btn-sm btn-danger" data-id="{{$banner->id}}" data-placement="button"><i class="bx bxs-trash"></i></a>
+                                    <a href="" data-toggle="tooltip" title="delete" class="dltbtn btn-sm btn-danger" data-id="{{$banner->id}}" data-placement="button"><i class="bx bxs-trash"></i></a>
                                 </form>
                             </div>
                             </td>

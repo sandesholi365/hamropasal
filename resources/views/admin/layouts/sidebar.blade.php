@@ -58,9 +58,9 @@
 						<div class="menu-title">Product Management</div>
 					</a>
 					<ul>
-						<li> <a href="component-alerts.html"><i class="bx bx-right-arrow-alt"></i>Alerts</a>
+						<li> <a href="{{ route('product.index')}}"><i class="bx bx-right-arrow-alt"></i>All Product</a>
 						</li>
-						<li> <a href="component-accordions.html"><i class="bx bx-right-arrow-alt"></i>Accordions</a>
+						<li> <a href="{{ route('product.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
 						</li>
 					</ul>
 				</li>				

@@ -9,7 +9,7 @@
             <div class="position-relative">
                 <h6 class="mb-0 text-uppercase">Total Category : {{\App\Models\Category::count()}}</h6>
             </div>
-          <div class="ms-auto"><a href="{{route('category.create')}}" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Create a new category</a></div>
+          <div class="ms-auto"><a href="{{route('category.create')}}" class=" btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Create a new category</a></div>
         </div>
         <div class="card-body border border-primary">
             <div class="table-responsive">
@@ -32,7 +32,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $category->title }}</td>
                             {{-- <td>{!! html_entity_decode(Str::limit($category->summary, 40))!!}</td> --}}
-                            <td><img src="{{$category->photo }}" alt="category image" style="max-height: 50px; max-width:50px"></td>
+                            <td><img src="{{$category->photo }}" style="max-height: 50px; max-width:50px"></td>
                             <td>{{$category->is_parent==1 ? 'Yes' : 'No'}}</td>
                             <td>{{App\Models\Category::where('id',$category->parent_id)->value('title')}}</td>
                             <td>
@@ -40,11 +40,11 @@
                             </td>
                             <td>
                                 <div class="d-flex order-actions justify-content-center">
-                                <a href="{{route('category.edit', $category->id)}}" data-toggle="tooltip" title="edit" class="btn btn-sm btn-warning" data-placement="button"><i class="bx bxs-edit"></i></a>
+                                <a href="{{route('category.edit', $category->id)}}" data-toggle="tooltip" title="edit" class=" btn-sm btn-warning" data-placement="button"><i class="bx bxs-edit"></i></a>&nbsp;
                                 <form action="{{route('category.destroy',$category->id)}}" method="POST">
                                     @csrf
                                     @method('Delete')
-                                    <a href="" data-toggle="tooltip" title="delete" class="dltbtn btn btn-sm btn-danger" data-id="{{$category->id}}" data-placement="button"><i class="bx bxs-trash"></i></a>
+                                    <a href="" data-toggle="tooltip" title="delete" class="dltbtn btn-sm btn-danger" data-id="{{$category->id}}" data-placement="button"><i class="bx bxs-trash"></i></a>
                                 </form>
                             </div>
                             </td>

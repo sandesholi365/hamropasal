@@ -4479,6 +4479,7 @@ textarea.form-control-lg {
 }
 .modal-body {
 	position: relative;
+	overflow: auto;
 	flex: 1 1 auto;
 	padding: 1rem
 }
