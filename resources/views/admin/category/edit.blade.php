@@ -56,11 +56,12 @@
                               <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                         </div><br>
                         <div class="col-md-10">
-                            <label for="is_parent"><b> Is Parent : &nbsp;</b></label> &nbsp;
+                            <label for="is_parent"><b> Make this as main category? : &nbsp;</b></label> &nbsp;
                             <input id="is_parent" name="is_parent" class="form-check-input" type="checkbox" value="1"{{$category->is_parent==1 ? 'checked':''}}> Yes
+                            <br><small style="color: #ff0000">(Already have main category then untick and select a main category for this sub-category.)</small>
                         </div><br>
                         <div class="col-md-10 {{$category->is_parent==1 ? 'd-none':''}}" id="parent_cat_div">
-                            <label for="parent_id" class="form-label"><b>Parent Category</b></label>
+                            <label for="parent_id" class="form-label"><b>Main Category</b></label>
                                 <select class="form-select" id="parent_id" name="parent_id">
                                     @foreach ($parent_cats as $pcat )
                                         <option value="{{$pcat->id}}" {{$pcat->id==$category->parent_id ? 'selected':''}}>{{$pcat->title}}</option>
@@ -68,7 +69,7 @@
                                 </select>
                         </div><br>
                         <div class="col-md-10">
-                               <button type="submit" class="btn btn-outline-success px-4">Save</button>
+                               <button type="submit" class="btn btn-outline-success px-4">Update</button>
                                <a href="{{url()->previous()}}" class="btn btn-outline-danger px-4">Cancel</a>
                         </div>
                     </form>

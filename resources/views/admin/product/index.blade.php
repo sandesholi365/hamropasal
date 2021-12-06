@@ -61,7 +61,7 @@
                             </div>
                             </td>
                             <div class="modal fade" id="showID{{$product->id}}">
-                              <div class="modal-dialog modal-xl">
+                              <div class="modal-dialog modal-lg">
                                     @php
                                     $productss=\App\Models\Product::where('id',$product->id)->first();
                                     @endphp
@@ -80,32 +80,36 @@
                                         <p>{!! html_entity_decode($productss->description)!!}</p>  
 
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <strong>Price: </strong>
+                                            <div class="col-md-4">
+                                                <strong>Product Price: </strong>
                                                 <p>Rs. {!! number_format($productss->price,2)!!}</p>  
                                             </div>
-                                            <div class="col-md-6">
-                                                <strong>Offer Price: </strong>
-                                                <p>Rs. {!! number_format($productss->offerprice,2)!!}</p>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <strong>Discount: </strong>   
+                                            <div class="col-md-4">
+                                                <strong>Discount Given: </strong>   
                                                 <p>{{$productss->discount}}%</p>
                                             </div>
-                                            <div class="col-md-6">
-                                                <strong>Category: </strong>
+                                            <div class="col-md-4">
+                                                <strong>Final Price after discount: </strong>
+                                                <p>Rs. {!! number_format($productss->offer_price,2)!!}</p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong>Items in Stock: </strong>
+                                                <p>{{$productss->stock}}</p>  
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong>Items main category: </strong>
                                                 <p>{{\App\Models\Category::where('id',$product->cat_id)->value('title')}}</p>  
                                             </div>
-                                            <div class="col-md-6">
-                                                <strong>Child Category: </strong>
+                                            <div class="col-md-4">
+                                                <strong>Items sub-category: </strong>
                                                 <p>{{\App\Models\Category::where('id',$product->child_cat_id)->value('title')}}</p>  
                                             </div>
                                             <div class="col-md-6">
-                                                <strong>Brand </strong>
+                                                <strong>Product Brand:</strong>
                                                 <p>{{\App\Models\Brand::where('id',$product->brand_id)->value('title')}}</p>  
                                             </div>
                                             <div class="col-md-6">
-                                                <strong>Size: </strong>
+                                                <strong>Product Size: </strong>
                                                 <p class="badge bg-success">{{($productss->size)}}</p>
                                             </div>
                                             <div class="col-md-6">
@@ -113,7 +117,7 @@
                                                 <p class="badge bg-danger">{{($productss->conditions)}}</p>
                                             </div>
                                             <div class="col-md-6">
-                                                <strong>Status: </strong>
+                                                <strong>Product Status: </strong>
                                                 <p class="badge bg-primary">{{($productss->status)}}</p>
                                             </div>
                                     </div>

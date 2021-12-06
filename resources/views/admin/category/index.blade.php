@@ -9,7 +9,7 @@
             <div class="position-relative">
                 <h6 class="mb-0 text-uppercase">Total Category : {{\App\Models\Category::count()}}</h6>
             </div>
-          <div class="ms-auto"><a href="{{route('category.create')}}" class=" btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Create a new category</a></div>
+          <div class="ms-auto"><a href="{{route('category.create')}}" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Create a new category</a></div>
         </div>
         <div class="card-body border border-primary">
             <div class="table-responsive">
@@ -20,8 +20,8 @@
                             <th>Title</th>
                             {{-- <th>Summary</th> --}}
                             <th>Photo</th>
-                            <th>Is Parent</th>
-                            <th>Parent Category</th>
+                            <th>Is main category?</th>
+                            <th>Main Category</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>

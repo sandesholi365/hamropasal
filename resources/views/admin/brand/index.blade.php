@@ -10,7 +10,7 @@
             <div class="position-relative">
                 <h6 class="mb-0 text-uppercase">Total Brands : {{\App\Models\Brand::count()}}</h6>
             </div>
-          <div class="ms-auto"><a href="{{route('brand.create')}}" class=" btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Create a new brand</a></div>
+          <div class="ms-auto"><a href="{{route('brand.create')}}" class=" btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Create a new brand</a></div>
         </div>
         <div class="card-body border border-primary">
             <div class="table-responsive">

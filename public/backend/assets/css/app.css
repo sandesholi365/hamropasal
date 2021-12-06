@@ -170,7 +170,7 @@ a {
 	justify-content: left;
 	padding: 8px 15px;
 	font-size: 15px;
-	color: #c5c2c2;
+	color: #ffffff;
 	outline-width: 0;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -215,7 +215,7 @@ a {
 .sidebar-wrapper .metismenu a:active,
 .sidebar-wrapper .metismenu a:focus,
 .sidebar-wrapper .metismenu a:hover {
-	color: #008cff;
+	color: #fffb06;
 	text-decoration: none;
 	background: rgb(13 110 253 / .12)
 }

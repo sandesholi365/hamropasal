@@ -69,7 +69,7 @@
                             <input type="number" step="any" name="price" placeholder="Enter price here...." class="form-control" id="price" value="{{old('price')}}">
                         </div><br>
                         <div class="col-md-10">
-                            <label for="discount" class="form-label"><b> Discount </b></label>
+                            <label for="discount" class="form-label"><b> Discount(%) </b></label>
                             <input type="number" min="0" max="100" step="any" name="discount" placeholder="Enter discount here...." class="form-control" id="discount" value="{{old('discount')}}">
                         </div><br>
                         <div class="col-12">
@@ -98,7 +98,7 @@
                         <div class="col-12">
                             <label for="size" class="form-label"><b>Size</b></label>
                                 <select class="form-select" id="size" name="size">
-                                    <option>--Size--</option>
+                                    <option value>--Size--</option>
                                     <option value="S" {{old('size')=='S' ? 'selected':''}}>Small</option>
                                     <option value="M" {{old('size')=='M' ? 'selected':''}}>Medium</option>
                                     <option value="L" {{old('size')=='L' ? 'selected':''}}>Large</option>
@@ -161,7 +161,7 @@
             } );
 </script>
 <script>
-    $('#category').change(function(){
+    $('#cat_id').change(function(){
         var category=$(this).val();
 
         if(category !=null){

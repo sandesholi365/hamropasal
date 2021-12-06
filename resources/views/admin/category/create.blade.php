@@ -55,13 +55,14 @@
                               <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                         </div><br>
                         <div class="col-md-10">
-                            <label for="is_parent"><b> Is Parent : &nbsp;</b></label> &nbsp;
+                            <label for="is_parent"><b> Create a main category? : &nbsp;</b></label> &nbsp;
                             <input id="is_parent" class="form-check-input" name="is_parent" type="checkbox" value="1" checked> Yes
+                           <br><small style="color: #ff0000">(Already have main category then untick and select a main category for your new sub-category.)</small>
                         </div><br>
                         <div class="col-md-10 d-none" id="parent_cat_div">
-                            <label for="parent_id" class="form-label"><b>Parent Category</b></label>
+                            <label for="parent_id" class="form-label"><b>Select a main category for your sub-category</b></label>
                                 <select class="form-select" id="parent_id" name="parent_id">
-                                    <option value="">--Parent Category--</option>
+                                    <option value="">--Main Category--</option>
                                     @foreach ($parent_cats as $pcat )
                                         <option value="{{$pcat->id}}"{{old('parent_id')==$pcat->id ? 'selected' : ''}}>{{$pcat->title}}</option>
                                     @endforeach
