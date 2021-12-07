@@ -18,26 +18,29 @@
                     <thead class="table-primary border">
                         <tr style="text-align: center; vertical-align: middle;">
                             <th>S.N</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Photo</th>
-                            <th>Condition</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th>Banner Title</th>
+                            <th>Banner Description</th>
+                            <th>Banner Picture</th>
+                            <th>Banner Condition</th>
+                            <th>Banner Status</th>
+                            <th>Banner Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($banners as $banner)
+                        @php
+                            $photo=explode(',',$banner->photo)
+                        @endphp
                         <tr style="text-align: center; vertical-align: middle;">
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $banner->title }}</td>
-                            <td>{!! html_entity_decode($banner->description)!!}</td>
-                            <td><img src="{{$banner->photo }}" style="max-height: 50px; max-width:50px"></td>
+                            <td>{{ ucfirst($banner->title) }}</td>
+                            <td>{!! html_entity_decode(ucfirst($banner->description))!!}</td>
+                            <td><img src="{{$photo[0]}}" style="max-height: 50px; max-width:50px"></td>
                             <td>
                                 @if($banner->condition=='banner')
-                                <button type="button" class=" btn-success btn-sm px-2">{{ $banner->condition }}</button>
+                                <button type="button" class=" btn-success btn-sm px-2">{{ ucfirst($banner->condition) }}</button>
                                 @else
-                                <button type="button" class=" btn-primary btn-sm px-2">{{ $banner->condition }}</button>
+                                <button type="button" class=" btn-primary btn-sm px-2">{{ ucfirst($banner->condition) }}</button>
                                 @endif
                             </td>
                             <td>

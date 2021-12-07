@@ -18,20 +18,23 @@
                     <thead class="table-primary border">
                         <tr style="text-align: center; vertical-align: middle;">
                             <th>S.N</th>
-                            <th>Title</th>
-                            <th>Slug</th>
-                            <th>Photo</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th>Brand Title</th>
+                            <th>Brand Slug</th>
+                            <th>Brand Picture</th>
+                            <th>Brand Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($brands as $brand)
+                        @php
+                            $photo=explode(',',$brand->photo)
+                        @endphp
                         <tr style="text-align: center; vertical-align: middle;">
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $brand->title }}</td>
-                            <td>{{ $brand->slug }}</td>
-                            <td><img src="{{$brand->photo }}" style="max-height: 50px; max-width:50px"></td>
+                            <td>{{ ucfirst($brand->title) }}</td>
+                            <td>{{ ucfirst($brand->slug) }}</td>
+                            <td><img src="{{$photo[0]}}" style="max-height: 50px; max-width:50px"></td>
                             <td>
                                 <input type="checkbox" name="toggle" value={{ $brand->id }} data-size="sm" data-toggle="toggle" {{$brand->status=='active' ? 'checked':''}} data-on="Active" data-off="Inactive" data-onstyle="danger" data-offstyle="dark">
                             </td>

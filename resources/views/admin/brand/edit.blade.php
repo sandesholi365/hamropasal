@@ -27,14 +27,14 @@
             <div class="card border-top border-0 border-4 border-primary">
                 <div class="card-body">
                     <div class="card-title d-flex align-items-center">
-                        <h5 class="mb-0 text-primary">Edit your brand</h5>
+                        <h5 class="mb-0 text-primary">Edit Your Brand</h5>
                     </div>
                     <hr>
                     <form action="{{route('brand.update',$brand->id)}}" method="POST">
                         @csrf
                         @method('patch')
                         <div class="col-md-10">
-                            <label for="title" class="form-label"><b> Title <span style="color:#ff0000">*</span></b></label>
+                            <label for="title" class="form-label"><b> Edit Brand Title <span style="color:#ff0000">*</span></b></label>
                             <input type="text" name="title" placeholder="Enter title here...." class="form-control" id="title" value="{{$brand->title}}">
                         </div><br>
                         <div class="col-12">

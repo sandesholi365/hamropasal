@@ -34,11 +34,11 @@
                         @csrf
                         {{ method_field('PUT') }}
                         <div class="col-md-10">
-                            <label for="title" class="form-label"><b> Title <span style="color:#ff0000">*</span></b></label>
+                            <label for="title" class="form-label"><b> Edit Category Title <span style="color:#ff0000">*</span></b></label>
                             <input type="text" name="title" placeholder="Enter title here...." class="form-control" id="title" value="{{$category->title}}">
                         </div><br>
                         <div class="col-md-10">
-                            <label for="summary" class="form-label"><b>Summary</b></label>
+                            <label for="summary" class="form-label"><b>Edit Category Summary</b></label>
                               <div class="form-group">
                                 <textarea name="summary" id="summary">{{$category->summary}}</textarea>
                               <div>

@@ -18,22 +18,25 @@
                     <thead class="table-primary border">
                         <tr style="text-align: center; vertical-align: middle;">
                             <th>S.N</th>
-                            <th>Title</th>
-                            <th>Photo</th>
-                            <th>Price (in Rs.)</th>
-                            <th>Discount (%)</th>
-                            <th>Size</th>
-                            <th>Condition</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th>Product Title</th>
+                            <th>Picture</th>
+                            <th>Product Price (in Rs.)</th>
+                            <th>Product Discount (%)</th>
+                            <th>Product Size</th>
+                            <th>Product Conditions</th>
+                            <th>Product Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($products as $product)
+                        @php
+                            $photo=explode(',',$product->photo)
+                        @endphp
                         <tr style="text-align: center; vertical-align: middle;">
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $product->title }}</td>
-                            <td><img src="{{$product->photo }}" style="max-height: 50px; max-width:50px"></td>
+                            <td>{{ ucfirst($product->title) }}</td>
+                            <td><img src="{{$photo[0]}}" style="max-height: 50px; max-width:50px"></td>
                             <td>Rs. {{number_format($product->price,2)}}</td>
                             <td>{{$product->discount}}%</td>
                             <td>{{$product->size}}</td>
@@ -89,31 +92,35 @@
                                                 <p>{{$productss->discount}}%</p>
                                             </div>
                                             <div class="col-md-4">
-                                                <strong>Final Price after discount: </strong>
+                                                <strong>Price after discount: </strong>
                                                 <p>Rs. {!! number_format($productss->offer_price,2)!!}</p>
                                             </div>
                                             <div class="col-md-4">
-                                                <strong>Items in Stock: </strong>
+                                                <strong>Total Stocks: </strong>
                                                 <p>{{$productss->stock}}</p>  
                                             </div>
                                             <div class="col-md-4">
-                                                <strong>Items main category: </strong>
+                                                <strong>Product Main Category: </strong>
                                                 <p>{{\App\Models\Category::where('id',$product->cat_id)->value('title')}}</p>  
                                             </div>
                                             <div class="col-md-4">
-                                                <strong>Items sub-category: </strong>
+                                                <strong>Product Sub-Category: </strong>
                                                 <p>{{\App\Models\Category::where('id',$product->child_cat_id)->value('title')}}</p>  
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
+                                                <strong>Product Vendor:</strong>
+                                                <p>{{\App\Models\User::where('id',$product->vendor_id)->value('full_name')}}</p>  
+                                            </div>
+                                            <div class="col-md-4">
                                                 <strong>Product Brand:</strong>
                                                 <p>{{\App\Models\Brand::where('id',$product->brand_id)->value('title')}}</p>  
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <strong>Product Size: </strong>
                                                 <p class="badge bg-success">{{($productss->size)}}</p>
                                             </div>
                                             <div class="col-md-6">
-                                                <strong>Conditions: </strong>
+                                                <strong>Product Conditions: </strong>
                                                 <p class="badge bg-danger">{{($productss->conditions)}}</p>
                                             </div>
                                             <div class="col-md-6">

@@ -33,18 +33,18 @@
                     <form action="{{route('banner.store')}}" method="POST">
                         @csrf
                         <div class="col-md-10">
-                            <label for="title" class="form-label"><b> Title <span style="color:#ff0000">*</span></b></label>
+                            <label for="title" class="form-label"><b> Banner Title <span style="color:#ff0000">*</span></b></label>
                             <input type="text" name="title" placeholder="Enter title here...." class="form-control" id="title" value="{{old('title')}}">
                         </div><br>
                         <div class="col-12">
-                            <label for="description" class="form-label"><b>Description</b></label>
+                            <label for="description" class="form-label"><b>Banner Description</b></label>
                               <div class="form-group">
                                 <textarea name="description" placeholder="Enter Description here...." id="description">{{old('description')}}</textarea>
                                 <div>
                             </div><br>
 
                         <div class="col-12">
-                            <label for="photo" class="form-label"><b>Select a picture <span style="color:#ff0000">*</span></b></label>
+                            <label for="photo" class="form-label"><b>Select Banner Picture <span style="color:#ff0000">*</span></b></label>
                             <div class="input-group">
                                 <span class="input-group-btn">
                                   <a id="lfm" data-input="photo" data-preview="holder" class="btn btn-primary">
@@ -57,17 +57,17 @@
                         </div><br>
 
                         <div class="col-12">
-                            <label for="condition" class="form-label"><b>Condition <span style="color:#ff0000">*</span></b></label>
+                            <label for="condition" class="form-label"><b>Banner Condition <span style="color:#ff0000">*</span></b></label>
                                 <select class="form-select" id="condition" name="condition">
-                                    <option>--Condition--</option>
+                                    <option>--Choose Banner Condition--</option>
                                     <option value="banner" {{old('condition')=='banner' ? 'selected':''}}>Banner</option>
                                     <option value="promo" {{old('condition')=='promo' ? 'selected':''}}>Promote</option>
                                 </select>
                         </div><br>
                         <div class="col-12">
-                            <label for="status" class="form-label"><b>Status <span style="color:#ff0000">*</span></b></label>
+                            <label for="status" class="form-label"><b>Banner Status <span style="color:#ff0000">*</span></b></label>
                                 <select class="form-select" id="status" name="status">
-                                    <option>--Status--</option>
+                                    <option>--Choose Banner Status--</option>
                                     <option value="active" {{old('status')=='active' ? 'selected':''}}>Active</option>
                                     <option value="inactive" {{old('status')=='inactive' ? 'selected':''}}>Inactive</option>
                                 </select>

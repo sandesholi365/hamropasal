@@ -17,24 +17,27 @@
                     <thead class="table-primary border">
                         <tr style="text-align: center; vertical-align: middle;">
                             <th>S.N</th>
-                            <th>Title</th>
+                            <th>Category Title</th>
                             {{-- <th>Summary</th> --}}
-                            <th>Photo</th>
+                            <th>Category Picture</th>
                             <th>Is main category?</th>
                             <th>Main Category</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th>Category Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($categories as $category)
+                        @php
+                            $photo=explode(',',$category->photo)
+                        @endphp
                         <tr style="text-align: center; vertical-align: middle;">
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $category->title }}</td>
+                            <td>{{ ucfirst($category->title) }}</td>
                             {{-- <td>{!! html_entity_decode(Str::limit($category->summary, 40))!!}</td> --}}
-                            <td><img src="{{$category->photo }}" style="max-height: 50px; max-width:50px"></td>
+                            <td><img src="{{$photo[0]}}" style="max-height: 50px; max-width:50px"></td>
                             <td>{{$category->is_parent==1 ? 'Yes' : 'No'}}</td>
-                            <td>{{App\Models\Category::where('id',$category->parent_id)->value('title')}}</td>
+                            <td>{{ucfirst(App\Models\Category::where('id',$category->parent_id)->value('title'))}}</td>
                             <td>
                                 <input type="checkbox" name="toggle" value={{ $category->id }} data-size="sm" data-toggle="toggle" {{$category->status=='active' ? 'checked':''}} data-on="Active" data-off="Inactive" data-onstyle="danger" data-offstyle="dark">
                             </td>

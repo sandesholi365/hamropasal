@@ -105,7 +105,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        
+        $product=Product::find($id);
+       if($product){
+           return view('admin.product.edit',compact(['product']));
+       }
+       else{
+           return back()->with('error','Data not found.');
+       }
     }
 
     /**
@@ -117,7 +123,35 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product=Product::find($id);
+        if($product){
+            $this->validate($request,[
+                'title'=>'required',
+                'summary'=>'required',
+                'description'=>'nullable',
+                'stock'=>'nullable|numeric',
+                'price'=>'nullable|numeric',
+                'discount'=>'nullable|numeric',
+                'photo'=>'required',
+                'cat_id'=>'required|exists:categories,id',
+                'child_cat_id'=>'nullable|exists:categories,id',
+                'size'=>'nullable',
+                'condition'=>'nullable',
+                'status'=>'required|in:active,inactive'
+            ]);
+            $data=$request->all();
+            $data['offer_price']=($request->price-(($request->price*$request->discount)/100));
+            $status=$product->fill($data)->save();
+            if($status){
+                return redirect()->route('product.index')->with('success','Product updated successfully.');
+            }
+            else{
+                return back()->with('error','Something went wrong !!!');
+            }
+        }
+        else{
+            return back()->with('error','Product not found');
+        }
     }
 
     /**
@@ -128,6 +162,18 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product=Product::find($id);
+        if($product){
+            $status=$product->delete();
+            if($status){
+                return redirect()->route('product.index')->with('success','Product deleted successfully.');
+            }
+            else{
+                return back()->with('error','Something not found.');
+            }
+        }
+        else{
+            return back()->with('error','Data not found.');
+        }
     }
 }

@@ -27,25 +27,25 @@
             <div class="card border-top border-0 border-4 border-primary">
                 <div class="card-body">
                     <div class="card-title d-flex align-items-center">
-                        <h5 class="mb-0 text-primary">Edit your banner</h5>
+                        <h5 class="mb-0 text-primary">Edit Your Banner</h5>
                     </div>
                     <hr>
                     <form action="{{route('banner.update',$banner->id)}}" method="POST">
                         @csrf
                         @method('patch')
                         <div class="col-md-10">
-                            <label for="title" class="form-label"><b> Title <span style="color:#ff0000">*</span></b></label>
+                            <label for="title" class="form-label"><b> Edit Banner Title <span style="color:#ff0000">*</span></b></label>
                             <input type="text" name="title" placeholder="Enter title here...." class="form-control" id="title" value="{{$banner->title}}">
                         </div><br>
                         <div class="col-12">
-                            <label for="description" class="form-label"><b>Description</b></label>
+                            <label for="description" class="form-label"><b>Edit Banner Description</b></label>
                               <div class="form-group">
                                 <textarea name="description" placeholder="Enter Description here...." id="description">{{$banner->description}}</textarea>
                               <div>
                             </div><br>
 
                         <div class="col-12">
-                            <label for="photo" class="form-label"><b>Select a picture <span style="color:#ff0000">*</span></b></label>
+                            <label for="photo" class="form-label"><b>Edit Banner Picture <span style="color:#ff0000">*</span></b></label>
                             <div class="input-group">
                                 <span class="input-group-btn">
                                   <a id="lfm" data-input="photo" data-preview="holder" class="btn btn-primary">
@@ -58,9 +58,9 @@
                         </div><br>
 
                         <div class="col-12">
-                            <label for="condition" class="form-label"><b>Condition <span style="color:#ff0000">*</span></b></label>
+                            <label for="condition" class="form-label"><b>Banner Condition <span style="color:#ff0000">*</span></b></label>
                                 <select class="form-select" id="condition" name="condition">
-                                    <option>--Condition--</option>
+                                    <option>--Choose Banner Condition--</option>
                                     <option value="banner" {{$banner->condition=='banner' ? 'selected':''}}>Banner</option>
                                     <option value="promo" {{$banner->condition=='promo' ? 'selected':''}}>Promote</option>
                                 </select>

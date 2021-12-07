@@ -33,11 +33,11 @@
                     <form action="{{route('category.store')}}" method="POST">
                         @csrf
                         <div class="col-md-10">
-                            <label for="title" class="form-label"><b> Title <span style="color:#ff0000">*</span></b></label>
+                            <label for="title" class="form-label"><b> Category Title <span style="color:#ff0000">*</span></b></label>
                             <input type="text" name="title" placeholder="Enter title here...." class="form-control" id="title" value="{{old('title')}}">
                         </div><br>
                         <div class="col-md-10">
-                            <label for="summary" class="form-label"><b>Summary</b></label>
+                            <label for="summary" class="form-label"><b>Category Summary</b></label>
                               <div class="form-group">
                                 <textarea name="summary" id="summary" placeholder="Enter summary here....">{{old('summary')}}</textarea>
                               <div>
@@ -69,9 +69,9 @@
                                 </select>
                         </div><br>
                         <div class="col-md-10">
-                            <label for="status" class="form-label"><b>Status <span style="color:#ff0000">*</span></b></label>
+                            <label for="status" class="form-label"><b>Category Status <span style="color:#ff0000">*</span></b></label>
                                 <select class="form-select" id="status" name="status">
-                                    <option>--Status--</option>
+                                    <option>--Choose Category Status--</option>
                                     <option value="active" {{old('status')=='active' ? 'selected':''}}>Active</option>
                                     <option value="inactive" {{old('status')=='inactive' ? 'selected':''}}>Inactive</option>
                                 </select>

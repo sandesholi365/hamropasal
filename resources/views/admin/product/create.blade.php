@@ -33,23 +33,23 @@
                     <form action="{{route('product.store')}}" method="POST">
                         @csrf
                         <div class="col-md-10">
-                            <label for="title" class="form-label"><b> Title <span style="color:#ff0000">*</span></b></label>
+                            <label for="title" class="form-label"><b> Product Title <span style="color:#ff0000">*</span></b></label>
                             <input type="text" name="title" placeholder="Enter title here...." class="form-control" id="title" value="{{old('title')}}">
                         </div><br>
                         <div class="col-12">
-                            <label for="summary" class="form-label"><b>Summary <span style="color:#ff0000">*</span></b></label>
+                            <label for="summary" class="form-label"><b>Product Summary <span style="color:#ff0000">*</span></b></label>
                               <div class="form-group">
                                 <textarea name="summary" placeholder="Enter Summary here...." id="summary">{{old('summary')}}</textarea>
                                 <div>
                             </div><br>
                          <div class="col-12">
-                             <label for="description" class="form-label"><b>Description</b></label>
+                             <label for="description" class="form-label"><b>Product Description</b></label>
                                 <div class="form-group">
                                   <textarea name="description" placeholder="Enter Description here...." id="description">{{old('description')}}</textarea>
                                 <div>
                         </div><br>
                         <div class="col-md-10">
-                            <label for="stock" class="form-label"><b> Stock <span style="color:#ff0000">*</span></b></label>
+                            <label for="stock" class="form-label"><b> Number of Stocks <span style="color:#ff0000">*</span></b></label>
                             <input type="number" name="stock" placeholder="Enter stock here...." class="form-control" id="stock" value="{{old('stock')}}">
                         </div><br>
                         <div class="col-12">
@@ -65,40 +65,40 @@
                               <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                         </div><br>
                         <div class="col-md-10">
-                            <label for="price" class="form-label"><b> Price <span style="color:#ff0000">*</span></b></label>
+                            <label for="price" class="form-label"><b> Product Price <span style="color:#ff0000">*</span></b></label>
                             <input type="number" step="any" name="price" placeholder="Enter price here...." class="form-control" id="price" value="{{old('price')}}">
                         </div><br>
                         <div class="col-md-10">
-                            <label for="discount" class="form-label"><b> Discount(%) </b></label>
+                            <label for="discount" class="form-label"><b> Product Discount(%) </b></label>
                             <input type="number" min="0" max="100" step="any" name="discount" placeholder="Enter discount here...." class="form-control" id="discount" value="{{old('discount')}}">
                         </div><br>
                         <div class="col-12">
-                            <label for="brand_id" class="form-label"><b>Brands</b></label>
+                            <label for="brand_id" class="form-label"><b>Product Brands</b></label>
                                 <select class="form-select" id="brand_id" name="brand_id">
                                     <option>--Brands--</option>
                                    @foreach (\App\Models\Brand::get() as $brand )
-                                   <option value="{{$brand->id}}">{{$brand->title}}</option>
+                                   <option value="{{$brand->id}}"{{old('brand_id')==$brand->id ? 'selected':''}}>{{$brand->title}}</option>
                                    @endforeach
                                 </select>
                         </div><br>
                         <div class="col-12">
-                            <label for="cat_id" class="form-label"><b>Category <span style="color:#ff0000">*</span></b></label>
+                            <label for="cat_id" class="form-label"><b>Product Main Category <span style="color:#ff0000">*</span></b></label>
                                 <select class="form-select" id="cat_id" name="cat_id">
-                                    <option>--Category--</option>
+                                    <option>--Choose Product Main Category--</option>
                                     @foreach (\App\Models\Category::where('is_parent',1)->get() as $category )
-                                   <option value="{{$category->id}}">{{$category->title}}</option>
+                                   <option value="{{$category->id}}"{{old('cat_id')==$category->id ? 'selected':''}}>{{$category->title}}</option>
                                    @endforeach
                                 </select>
                         </div><br>
                         <div class="col-12 d-none" id="child_cat_div">
-                            <label for="child_cat_id" class="form-label"><b>Child Category </b></label>
+                            <label for="child_cat_id" class="form-label"><b>Product Sub-Category </b></label>
                                 <select class="form-select" id="child_cat_id" name="child_cat_id">                                    
                                 </select>
                         </div><br>
                         <div class="col-12">
-                            <label for="size" class="form-label"><b>Size</b></label>
+                            <label for="size" class="form-label"><b>Product Size</b></label>
                                 <select class="form-select" id="size" name="size">
-                                    <option value>--Size--</option>
+                                    <option value>--Choose Product Size--</option>
                                     <option value="S" {{old('size')=='S' ? 'selected':''}}>Small</option>
                                     <option value="M" {{old('size')=='M' ? 'selected':''}}>Medium</option>
                                     <option value="L" {{old('size')=='L' ? 'selected':''}}>Large</option>
@@ -106,27 +106,27 @@
                                 </select>
                         </div><br>
                         <div class="col-12">
-                            <label for="conditions" class="form-label"><b>Conditions</b></label>
+                            <label for="conditions" class="form-label"><b>Product Conditions</b></label>
                                 <select class="form-select" id="conditions" name="conditions">
-                                    <option>--Conditions--</option>
+                                    <option>--Choose Product Conditions--</option>
                                     <option value="new" {{old('conditions')=='new' ? 'selected':''}}>New</option>
                                     <option value="popular" {{old('conditions')=='popular' ? 'selected':''}}>Popular</option>
                                     <option value="winter" {{old('conditions')=='winter' ? 'selected':''}}>Winter</option>
                                 </select>
                         </div><br>
                         <div class="col-12">
-                            <label for="vendors" class="form-label"><b>Vendors</b></label>
-                                <select class="form-select" id="vendors" name="vendors">
-                                    <option>--Vendors--</option>
+                            <label for="vendor_id" class="form-label"><b>Product Vendors</b></label>
+                                <select class="form-select" id="vendor_id" name="vendor_id">
+                                    <option>--Choose Product Vendors--</option>
                                    @foreach (\App\Models\User::where('role','vendor')->get() as $vendor )
-                                   <option value="{{$vendor->id}}">{{$vendor->full_name}}</option>
+                                   <option value="{{$vendor->id}}"{{old('vendor_id')==$vendor->id ? 'selected':''}}>{{$vendor->full_name}}</option>
                                    @endforeach
                                 </select>
                         </div><br>
                         <div class="col-12">
-                            <label for="status" class="form-label"><b>Status <span style="color:#ff0000">*</span></b></label>
+                            <label for="status" class="form-label"><b>Product Status <span style="color:#ff0000">*</span></b></label>
                                 <select class="form-select" id="status" name="status">
-                                    <option>--Status--</option>
+                                    <option>--Choose Product Status--</option>
                                     <option value="active" {{old('status')=='active' ? 'selected':''}}>Active</option>
                                     <option value="inactive" {{old('status')=='inactive' ? 'selected':''}}>Inactive</option>
                                 </select>
@@ -173,7 +173,7 @@
                     category:"category",
                 },
                 success:function(response){
-                    var show_html="<option value=''>--Child Category--</option>";
+                    var show_html="<option value=''>--Choose Product Sub-Category--</option>";
                     if (response.status){
                         $('#child_cat_div').removeClass('d-none');
                         $.each(response.data,function(id,title){

@@ -50,7 +50,7 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'=>'nullable',
+            'title'=>'required',
             'photo'=>'required',
             'status'=>'nullable|in:active,inactive',
           ]);
@@ -110,7 +110,7 @@ class BrandController extends Controller
         $brand=Brand::find($id);
        if($brand){
         $this->validate($request,[
-            'title'=>'nullable',
+            'title'=>'required',
             'photo'=>'required',
             'status'=>'nullable|in:active,inactive',
           ]);

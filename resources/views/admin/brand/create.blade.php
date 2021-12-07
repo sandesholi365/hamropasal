@@ -33,11 +33,11 @@
                     <form action="{{route('brand.store')}}" method="POST">
                         @csrf
                         <div class="col-md-10">
-                            <label for="title" class="form-label"><b> Title </b></label>
+                            <label for="title" class="form-label"><b> Brand Title <span style="color:#ff0000">*</span></b></label>
                             <input type="text" name="title" placeholder="Enter title here...." class="form-control" id="title" value="{{old('title')}}">
                         </div><br>
                         <div class="col-12">
-                            <label for="photo" class="form-label"><b>Select a picture <span style="color:#ff0000">*</span></b></label>
+                            <label for="photo" class="form-label"><b>Select a Picture <span style="color:#ff0000">*</span></b></label>
                             <div class="input-group">
                                 <span class="input-group-btn">
                                   <a id="lfm" data-input="photo" data-preview="holder" class="btn btn-primary">
@@ -49,9 +49,9 @@
                               <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                         </div><br>
                         <div class="col-12">
-                            <label for="status" class="form-label"><b>Status <span style="color:#ff0000">*</span></b></label>
+                            <label for="status" class="form-label"><b>Brand Status <span style="color:#ff0000">*</span></b></label>
                                 <select class="form-select" id="status" name="status">
-                                    <option>--Status--</option>
+                                    <option>--Choose Brand Status--</option>
                                     <option value="active" {{old('status')=='active' ? 'selected':''}}>Active</option>
                                     <option value="inactive" {{old('status')=='inactive' ? 'selected':''}}>Inactive</option>
                                 </select>
